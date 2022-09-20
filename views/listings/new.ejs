@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Create a New Listing</h1>
+        <div class="col-md-6 offset-3">
+            <form action="/listings" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="streetNumber">Enter Street Number: </label>
+                    <input class="form-control" type="text" name="listing[streetNumber]" id="streetNumber" required>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a street number.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="streetName">Enter Street Name: </label>
+                    <input class="form-control" type="text" id="streetName" name="listing[streetName]" required>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a street name.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="city">Enter City: </label>
+                    <input class="form-control" type="text" id="city" name="listing[city]" required>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a city name.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="province">Enter Province/State: </label>
+                    <input class="form-control" type="text" id="province" name="listing[province]" required>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a province or state name.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="price">Unit Price: </label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input id="price" type="text" class="form-control" aria-label="price"
+                            aria-describedby="price-label" name="listing[price]" placeholder="0.00" required>
+                        <div class="valid-feedback">
+                            Valid!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a price.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description: </label>
+                    <textarea class="form-control" type="text" id="description" name="listing[description]"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a description.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Add Images: </label>
+                    <input type="file" class="form-control" name="image" id="image" multiple>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide an image URL.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info text-light">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>

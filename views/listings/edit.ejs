@@ -1,0 +1,104 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row mb-3">
+        <h1 class="col-md-6 offset-3">Edit Listing</h1>
+        <div class="col-md-6 offset-3">
+            <form action="/listings/<%=listing._id%>?_method=PUT" method="POST" novalidate class="validated-form"
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="streetNumber">Enter Street Number: </label>
+                    <input class="form-control" type="text" name="listing[streetNumber]" id="streetNumber" required
+                        value=<%=listing.streetNumber %>>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a street number.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="streetName">Enter Street Name: </label>
+                    <input class="form-control" type="text" id="streetName" name="listing[streetName]" required
+                        value="<%=listing.streetName %>">
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a street name.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="city">Enter City: </label>
+                    <input class="form-control" type="text" id="city" name="listing[city]" value="<%=listing.city %>"
+                        required>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a city name.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="province">Enter Province/State: </label>
+                    <input class="form-control" type="text" id="province" name="listing[province]"
+                        value="<%=listing.province %>" required>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a province or state name.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="price">Unit Price: </label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input id="price" type="text" class="form-control" aria-label="price"
+                            aria-describedby="price-label" name="listing[price]" placeholder="0.00" required
+                            value="<%= listing.price %> ">
+                        <div class="valid-feedback">
+                            Valid!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a price.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description: </label>
+                    <textarea class="form-control" type="text" id="description" name="listing[description]"
+                        required><%= listing.description %> </textarea>
+                    <div class="valid-feedback">
+                        Valid!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a description.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="image">Upload Images: </label>
+                    <input class="form-control" type="file" id="image" name="image" multiple>
+                </div>
+
+                <div class="mb-3">
+                    <h7>Select image(s) to delete: </h7>
+                    <% listing.images.forEach(function(img, i){ %>
+                        <div>
+                            <img src="<%=img.thumbnail%>" class="img-thumbnail" alt="">
+                        </div>
+                        <div class="form-check-inline">
+                            <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                        </div>
+                        <label for="image-<%=i%>">Delete</label>
+                        <% }) %>
+                </div>
+
+
+                <div class="mb-3">
+                    <button class="btn btn-info text-light">Save Listing </button>
+                </div>
+                <a class="btn btn-success" href="/listings/<%= listing._id %> ">Back To Listing</a>
+            </form>
+        </div>
+    </div>
